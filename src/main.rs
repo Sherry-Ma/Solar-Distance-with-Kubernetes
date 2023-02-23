@@ -26,12 +26,94 @@ async fn mercury() -> impl Responder {
     HttpResponse::Ok().body(get_solar_distance(planet_name))
 }
 
+#[get("/Venus")]
+async fn venus() -> impl Responder {
+    let planet_name = "Venus";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Earth")]
+async fn earth() -> impl Responder {
+    let planet_name = "Earth";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Mars")]
+async fn mars() -> impl Responder {
+    let planet_name = "Mars";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Jupiter")]
+async fn jupiter() -> impl Responder {
+    let planet_name = "Jupiter";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Saturn")]
+async fn saturn() -> impl Responder {
+    let planet_name = "Saturn";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Uranus")]
+async fn uranus() -> impl Responder {
+    let planet_name = "Uranus";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+#[get("/Neptune")]
+async fn neptune() -> impl Responder {
+    let planet_name = "Neptune";
+    println!(
+        "The distance of {} from the sun is {} AU",
+        planet_name,
+        get_solar_distance(planet_name)
+    );
+    HttpResponse::Ok().body(get_solar_distance(planet_name))
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     //add a print message to the console that the service is running
     println!("Running the service");
-    HttpServer::new(|| App::new().service(hello).service(mercury))
-        .bind("0.0.0.0:8080")?
-        .run()
-        .await
+    HttpServer::new(|| {
+        App::new()
+            .service(hello)
+            .service(mercury)
+            .service(venus)
+            .service(earth)
+            .service(mars)
+            .service(jupiter)
+            .service(saturn)
+            .service(uranus)
+            .service(neptune)
+    })
+    .bind("0.0.0.0:8080")?
+    .run()
+    .await
 }

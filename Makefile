@@ -3,10 +3,10 @@ install:
 		cargo build -j 1
 
 build:
-	docker build -t movie .
+	docker build -t solar_distance .
 
 rundocker:
-	docker run -it --rm -p 8080:8080 movie
+	docker run -it --rm -p 8080:8080 solar_distance
 
 format:
 	cargo fmt --quiet
