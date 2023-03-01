@@ -27,7 +27,9 @@ then you can visit http://127.0.0.1:8080/ in your browser and interact with the 
 ## Push image to Dockerhub
 First you need to sign up for an account at dockerhub!(Aquire a username and the password)
 In the ternimal, login dockerhub:
-`docker login --username=<your-dockerhub-username>`
+```
+docker login --username=<your-dockerhub-username>
+```
 You may need to input your password. Then push the docker image with command:
 ```
 docker build . -t <your-dockerhub-username>/<your-application-name>
