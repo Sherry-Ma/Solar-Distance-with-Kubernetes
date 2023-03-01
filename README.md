@@ -24,13 +24,32 @@ run:
 ```
 then you can visit http://127.0.0.1:8080/ in your browser and interact with the microservice
 
-
-
-
-
-
 ## Push image to Dockerhub
-
-
+First you need to sign up for an account at dockerhub!(Aquire a username and the password)
+In the ternimal, login dockerhub:
+`docker login --username=<your-dockerhub-username>`
+You may need to input your password. Then push the docker image with command:
+```
+docker build . -t <your-dockerhub-username>/<your-application-name>
+docker push <your-dockerhub-username>/<your-application-name>
+```
 
 ## Deploy image to minikube
+First, start your cluster:
+```
+minikube start
+```
+Create a deployment:
+```
+kubectl create deployment $NAME --image=registry.hub.docker.com/<your-dockerhub-username>/<your-application-name>
+# Replace $NAME with any cluster name
+```
+You may view the service status:
+```
+kubectl get service $NAME
+```
+Finally, get a url that can run the application
+```
+minikube service $NAME  --url
+```
+This command will return a url like `` for you to run the app in a browser
