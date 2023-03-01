@@ -44,6 +44,10 @@ Create a deployment:
 kubectl create deployment $NAME --image=registry.hub.docker.com/<your-dockerhub-username>/<your-application-name>
 # Replace $NAME with any cluster name
 ```
+Create service:
+```
+kubectl expose deployment $NAME --type=LoadBalancer --port=8080
+```
 You may view the service status:
 ```
 kubectl get service $NAME
@@ -52,4 +56,4 @@ Finally, get a url that can run the application
 ```
 minikube service $NAME  --url
 ```
-This command will return a url like `` for you to run the app in a browser
+This command will return a url like `http://192.168.49.2:32155` for you to run the app in a browser
